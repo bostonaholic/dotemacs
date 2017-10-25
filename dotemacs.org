@@ -314,9 +314,6 @@ HTML mode is defined in =sgml-mode.el=.
    org-startup-truncated nil)
   (advice-add 'org-src--construct-edit-buffer-name :override #'msb/org-src-buffer-name))
 
-(use-package org-faces
-  :after org)
-
 (use-package org-src
   :ensure nil
   :after org
