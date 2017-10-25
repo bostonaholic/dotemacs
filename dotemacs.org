@@ -91,6 +91,7 @@ More better defaults.
 (mouse-avoidance-mode 'banish)                     ; Avoid collision of mouse with point
 (put 'downcase-region 'disabled nil)               ; Enable downcase-region
 (put 'upcase-region 'disabled nil)                 ; Enable upcase-region
+(show-paren-mode 1)                                ; Show matching parens
 #+END_SRC
 
 Garbage collect on focus-out.
