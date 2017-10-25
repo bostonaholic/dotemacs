@@ -1,0 +1,11 @@
+#+TITLE: DotEmacs
+#+Author: Matthew Boston
+
+* Installation
+
+** Emacs
+
+#+BEGIN_SRC sh
+brew install emacs --with-cocoa --with-ctags --with-gnutls --with-librsvg --with-imagemagick
+git clone https://github.com/bostonaholic/dotemacs.git ~/.emacs.d/
+#+END_SRC

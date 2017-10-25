@@ -1,0 +1,16 @@
+#+TITLE: DotEmacs
+#+Author: Matthew Boston
+
+* Table of Contents :TOC:
+- [[#bootstrap][Bootstrap]]
+  - [[#use-better-defaults][Use better defaults]]
+
+* Bootstrap
+
+** Use better defaults
+
+Maximize by default.
+
+#+BEGIN_SRC emacs-lisp
+(set-frame-parameter nil 'fullscreen 'maximized)
+#+END_SRC
