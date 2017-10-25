@@ -270,8 +270,6 @@ HTML mode is defined in =sgml-mode.el=.
 #+BEGIN_SRC emacs-lisp
 (use-package markdown-mode
   :config
-  (unbind-key "M-<down>" markdown-mode-map)
-  (unbind-key "M-<up>" markdown-mode-map)
   (setq-default
     markdown-asymmetric-header t
     markdown-split-window-direction 'right)
