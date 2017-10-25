@@ -144,6 +144,7 @@ Load =monokai-theme=.
 #+BEGIN_SRC emacs-lisp
 (use-package monokai-theme
   :demand t)
+#+END_SRC
 
 A neat file explorer.
 
