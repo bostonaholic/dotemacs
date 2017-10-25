@@ -353,7 +353,7 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 #+BEGIN_SRC emacs-lisp
 (use-package magit
   :bind ("C-c g" . magit-status)
-  :init (setq magit-commit-arguments (quote (concat "--gpg-sign=" my/gpg-signing-key))))
+  :init (setq magit-commit-arguments (list (concat "--gpg-sign=" my/gpg-signing-key))))
 #+END_SRC
 
 ** Paredit
