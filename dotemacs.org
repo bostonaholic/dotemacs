@@ -4,6 +4,8 @@
 * Table of Contents :TOC:
 - [[#bootstrap][Bootstrap]]
   - [[#use-better-defaults][Use better defaults]]
+  - [[#load-customel][Load =.custom.el=]]
+  - [[#load-secretel][Load =.secret.el=]]
 
 * Bootstrap
 
@@ -79,4 +81,27 @@ Garbage collect on focus-out.
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'focus-out-hook #'garbage-collect)
+#+END_SRC
+
+** Load =.custom.el=
+
+#+BEGIN_SRC emacs-lisp
+(setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+#+END_SRC
+
+** Load =.secret.el=
+
+#+BEGIN_SRC emacs-lisp
+(let ((secret.el (expand-file-name ".secret.el" user-emacs-directory)))
+  (when (file-exists-p secret.el)
+    (load secret.el)))
+#+END_SRC
+
+Load some of those secrets.
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name my/user-full-name
+      user-mail-address my/user-mail-address)
 #+END_SRC
