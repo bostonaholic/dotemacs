@@ -283,7 +283,7 @@ HTML mode is defined in =sgml-mode.el=.
 
 #+BEGIN_SRC emacs-lisp
 (use-package org
-  :delight org-mode "Org"
+  :ensure nil
   :preface
   (defun msb/org-src-buffer-name (org-buffer-name language)
     "Construct the buffer name for a source editing buffer. See
@@ -319,6 +319,7 @@ HTML mode is defined in =sgml-mode.el=.
   :after org)
 
 (use-package org-src
+  :ensure nil
   :after org
   :config
   (setq-default
