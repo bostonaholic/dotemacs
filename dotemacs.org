@@ -325,7 +325,8 @@ Tired of having to manually update your tables of contents? This package will
 maintain a TOC at the first heading that has a =:TOC:= tag.
 
 #+BEGIN_SRC emacs-lisp
-(use-package toc-org :after org)
+(use-package toc-org
+  :after org)
 #+END_SRC
 
 ** Ruby
