@@ -7,6 +7,17 @@
   - [[#load-customel][Load =.custom.el=]]
   - [[#load-secretel][Load =.secret.el=]]
 - [[#theme][Theme]]
+- [[#languages][Languages]]
+  - [[#clojure][Clojure]]
+  - [[#css][CSS]]
+  - [[#docker][Docker]]
+  - [[#html][HTML]]
+  - [[#javascript][JavaScript]]
+  - [[#lisp][Lisp]]
+  - [[#markdown][Markdown]]
+  - [[#org][Org]]
+  - [[#ruby][Ruby]]
+  - [[#yaml][YAML]]
 
 * Bootstrap
 
@@ -126,4 +137,205 @@ Load =monokai-theme=.
 #+BEGIN_SRC emacs-lisp
 (use-package monokai-theme
   :demand t)
+#+END_SRC
+
+* Languages
+
+** Clojure
+
+#+BEGIN_SRC emacs-lisp
+(use-package clojure-mode
+  :mode ("\\.boot\\'" "\\.edn\\'")
+  :init
+  ;; This regexp matches shebang expressions like `#!/usr/bin/env boot'
+  (add-to-list 'magic-mode-alist '("#!.*boot\\s-*$" . clojure-mode))
+  :config
+  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+  (add-hook 'clojurescript-mode-hook 'enable-paredit-mode)
+  (add-hook 'clojure-mode-hook 'turn-on-eldoc-mode))
+
+(use-package cider
+  :init
+  (setq cider-stacktrace-default-filters '(tooling dup)
+        cider-repl-pop-to-buffer-on-connect nil
+        cider-prompt-save-file-on-load nil
+        cider-repl-use-clojure-font-lock t
+        cider-repl-display-help-banner nil)
+  (add-hook 'clojure-mode-hook 'cider-mode)
+  :config
+  (add-hook 'cider-mode-hook 'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook 'subword-mode)
+  (add-hook 'cider-repl-mode-hook 'paredit-mode))
+#+END_SRC
+
+** CSS
+
+#+BEGIN_SRC emacs-lisp
+(use-package css-mode
+  :ensure nil
+  :config (setq-default css-indent-offset 2))
+
+(use-package scss-mode
+  :ensure nil
+  :preface
+  (defun msb/scss-set-comment-style ()
+    (setq-local comment-end "")
+    (setq-local comment-start "//"))
+  :delight scss-mode "SCSS"
+  :mode ("\\.css\\'" "\\.sass\\'" "\\.scss\\'")
+  :init (add-hook 'scss-mode-hook #'msb/scss-set-comment-style))
+#+END_SRC
+
+** Docker
+
+#+BEGIN_SRC emacs-lisp
+(use-package dockerfile-mode)
+#+END_SRC
+
+** HTML
+
+HTML mode is defined in =sgml-mode.el=.
+
+#+BEGIN_SRC emacs-lisp
+(use-package sgml-mode
+  :ensure nil
+  :delight html-mode "HTML"
+  :init
+  (add-hook 'html-mode-hook #'sgml-electric-tag-pair-mode)
+  (add-hook 'html-mode-hook #'sgml-name-8bit-mode)
+  :config (setq-default sgml-basic-offset 2))
+#+END_SRC
+
+** JavaScript
+
+#+BEGIN_SRC emacs-lisp
+(use-package coffee-mode)
+
+(use-package js2-mode
+  :delight js2-jsx-mode "JSX"
+  :mode ("\\.jsx?\\'" . js2-jsx-mode)
+  :interpreter ("node" . js2-jsx-mode))
+
+(use-package json-mode
+  :mode "\\.jshintrc\\'")
+
+(use-package tern
+  :init (add-hook 'js-mode-hook #'tern-mode))
+#+END_SRC
+
+** Lisp
+
+#+BEGIN_SRC emacs-lisp
+(use-package emacs-lisp-mode
+  :ensure nil
+  :delight emacs-lisp-mode "Emacs Lisp"
+  :config (delight 'lisp-interaction-mode "Lisp Interaction"))
+
+(use-package ielm
+  :ensure nil
+  :init (add-hook 'ielm-mode-hook '(lambda () (setq-local scroll-margin 0))))
+
+(use-package lisp-mode
+  :ensure nil
+  :delight lisp-mode "Lisp")
+#+END_SRC
+
+** Markdown
+
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+  :delight markdown-mode "Markdown"
+  :config
+  (unbind-key "M-<down>" markdown-mode-map)
+  (unbind-key "M-<up>" markdown-mode-map)
+  (setq-default
+    markdown-asymmetric-header t
+    markdown-split-window-direction 'right)
+  (add-hook 'markdown-mode-hook 'turn-on-orgtbl))
+#+END_SRC
+
+** Org
+
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :ensure nil
+  :delight org-mode "Org"
+  :preface
+  (defun msb/org-src-buffer-name (org-buffer-name language)
+    "Construct the buffer name for a source editing buffer. See
+`org-src--construct-edit-buffer-name'."
+    (format "*%s*" org-buffer-name))
+  (defun msb/org-backward-paragraph-shifted ()
+    "See `org-backward-paragraph'. Support shift."
+    (interactive "^")
+    (org-backward-paragraph))
+  (defun msb/org-forward-paragraph-shifted ()
+    "See `org-forward-paragraph'. Support shift."
+    (interactive "^")
+    (org-forward-paragraph))
+  :bind
+  (:map org-mode-map
+        ([remap backward-paragraph] . msb/org-backward-paragraph-shifted)
+        ([remap forward-paragraph] . msb/org-forward-paragraph-shifted)
+        ("<C-return>" . nil)
+        ("<C-S-down>" . nil)
+        ("<C-S-up>" . nil))
+  :init
+  (add-hook 'org-mode-hook #'org-sticky-header-mode)
+  (add-hook 'org-mode-hook #'toc-org-enable)
+  :config
+  (setq-default
+   org-descriptive-links nil
+   org-support-shift-select 'always
+   org-startup-folded nil
+   org-startup-truncated nil)
+  (advice-add 'org-src--construct-edit-buffer-name :override #'msb/org-src-buffer-name))
+
+(use-package org-faces
+  :ensure nil
+  :after org)
+
+(use-package org-src
+  :ensure nil
+  :after org
+  :config
+  (setq-default
+   org-edit-src-content-indentation 0
+   org-edit-src-persistent-message nil
+   org-src-window-setup 'current-window))
+#+END_SRC
+
+Display the current Org header in the header-line.
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-sticky-header
+  :config
+  (setq-default
+   org-sticky-header-full-path 'full
+   org-sticky-header-outline-path-separator " / "))
+#+END_SRC
+
+Tired of having to manually update your tables of contents? This package will
+maintain a TOC at the first heading that has a =:TOC:= tag.
+
+#+BEGIN_SRC emacs-lisp
+(use-package toc-org :after org)
+#+END_SRC
+
+** Ruby
+
+#+BEGIN_SRC emacs-lisp
+(use-package rbenv)
+
+(use-package ruby-mode
+  :mode "Brewfile\\'"
+  :interpreter "ruby")
+#+END_SRC
+
+** YAML
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  :delight yaml-mode "YAML"
+  :mode ("\\.ya?ml\\'" "Procfile\\'"))
 #+END_SRC
