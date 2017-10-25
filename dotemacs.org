@@ -207,8 +207,7 @@ A neat file explorer.
   (defun msb/scss-set-comment-style ()
     (setq-local comment-end "")
     (setq-local comment-start "//"))
-  :delight scss-mode "SCSS"
-  :mode ("\\.css\\'" "\\.sass\\'" "\\.scss\\'")
+  :mode "\\.scss\\'"
   :init (add-hook 'scss-mode-hook #'msb/scss-set-comment-style))
 #+END_SRC
 
