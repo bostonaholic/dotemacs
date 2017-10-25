@@ -16,6 +16,7 @@
   - [[#lisp][Lisp]]
   - [[#markdown][Markdown]]
   - [[#org][Org]]
+  - [[#protobuf][Protobuf]]
   - [[#ruby][Ruby]]
   - [[#yaml][YAML]]
 - [[#programming][Programming]]
@@ -338,6 +339,19 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 #+BEGIN_SRC emacs-lisp
 (use-package toc-org
   :after org)
+#+END_SRC
+
+** Protobuf
+
+#+BEGIN_SRC emacs-lisp
+(use-package protobuf-mode
+  :delight "Protobuf"
+  :preface
+  (defconst my/protobuf-style
+    '((c-basic-offset . 2)
+      (indent-tabs-mode . nil)))
+  :config
+  (add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-style" my/protobuf-style t))))
 #+END_SRC
 
 ** Ruby
