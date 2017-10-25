@@ -200,11 +200,9 @@ A neat file explorer.
 
 #+BEGIN_SRC emacs-lisp
 (use-package css-mode
-  :ensure nil
   :config (setq-default css-indent-offset 2))
 
 (use-package scss-mode
-  :ensure nil
   :preface
   (defun msb/scss-set-comment-style ()
     (setq-local comment-end "")
@@ -226,7 +224,6 @@ HTML mode is defined in =sgml-mode.el=.
 
 #+BEGIN_SRC emacs-lisp
 (use-package sgml-mode
-  :ensure nil
   :delight html-mode "HTML"
   :init
   (add-hook 'html-mode-hook #'sgml-electric-tag-pair-mode)
@@ -286,7 +283,6 @@ HTML mode is defined in =sgml-mode.el=.
 
 #+BEGIN_SRC emacs-lisp
 (use-package org
-  :ensure nil
   :delight org-mode "Org"
   :preface
   (defun msb/org-src-buffer-name (org-buffer-name language)
@@ -320,11 +316,9 @@ HTML mode is defined in =sgml-mode.el=.
   (advice-add 'org-src--construct-edit-buffer-name :override #'msb/org-src-buffer-name))
 
 (use-package org-faces
-  :ensure nil
   :after org)
 
 (use-package org-src
-  :ensure nil
   :after org
   :config
   (setq-default
