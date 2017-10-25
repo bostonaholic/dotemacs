@@ -1,6 +1,8 @@
 #+TITLE: DotEmacs
 #+Author: Matthew Boston
 
+This is my personal Emacs configuration.
+
 * Installation
 
 ** Emacs
@@ -8,4 +10,22 @@
 #+BEGIN_SRC sh
 brew install emacs --with-cocoa --with-ctags --with-gnutls --with-librsvg --with-imagemagick
 git clone https://github.com/bostonaholic/dotemacs.git ~/.emacs.d/
+#+END_SRC
+
+** Ag
+
+My Helm setup uses =ag= instead of =grep= to lookup files.
+
+#+BEGIN_SRC sh
+brew install the_silver_searcher
+#+END_SRC
+
+** Flycheck
+
+I use [[https://github.com/flycheck/flycheck][Flycheck]] as linter framework to
+display syntax warnings and errors whithin each buffer.
+
+#+BEGIN_SRC sh
+scss_lint scss_lint_reporter_checkstyle  # SCSS
+npm install -g eslint                    # JavaScript
 #+END_SRC
