@@ -58,7 +58,6 @@ More better defaults.
  help-window-select t                              ; Focus new help windows when opened
  indent-tabs-mode nil                              ; Stop using tabs to indent
  inhibit-startup-screen t                          ; Disable start-up screen
- initial-scratch-message ""                        ; Empty the initial *scratch* buffer
  kill-whole-line t                                 ; Kill whole lines
  large-file-warning-threshold 100000000            ; Warn before opening large files
  left-margin-width 1 right-margin-width 1          ; Add left and right margins
