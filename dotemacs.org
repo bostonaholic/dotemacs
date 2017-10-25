@@ -6,6 +6,7 @@
   - [[#use-better-defaults][Use better defaults]]
   - [[#load-customel][Load =.custom.el=]]
   - [[#load-secretel][Load =.secret.el=]]
+- [[#theme][Theme]]
 
 * Bootstrap
 
@@ -104,4 +105,25 @@ Load some of those secrets.
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name my/user-full-name
       user-mail-address my/user-mail-address)
+#+END_SRC
+
+* Theme
+
+Set the font that I like.
+
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'default nil :font "Fira Mono for Powerline")
+#+END_SRC
+
+The face for italic text is underlined when the font does not support slant by default. I don't like it.
+
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'italic nil :underline nil)
+#+END_SRC
+
+Load =monokai-theme=.
+
+#+BEGIN_SRC emacs-lisp
+(use-package monokai-theme
+  :demand t)
 #+END_SRC
