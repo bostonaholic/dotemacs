@@ -372,8 +372,6 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 ** Paredit
 
 #+BEGIN_SRC emacs-lisp
-(use-package highlight-parentheses)
-
 (use-package paredit
   :diminish paredit-mode
   :config
