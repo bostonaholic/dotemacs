@@ -20,6 +20,7 @@
   - [[#yaml][YAML]]
 - [[#programming][Programming]]
   - [[#magit][Magit]]
+  - [[#paredit][Paredit]]
 
 * Bootstrap
 
@@ -351,4 +352,17 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 (use-package magit
   :bind ("C-c g" . magit-status)
   :init (setq magit-commit-arguments (quote (concat "--gpg-sign=" my/gpg-signing-key))))
+#+END_SRC
+
+** Paredit
+
+#+BEGIN_SRC emacs-lisp
+(use-package highlight-parentheses)
+
+(use-package paredit
+  :diminish paredit-mode
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
 #+END_SRC
