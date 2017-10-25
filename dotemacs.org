@@ -387,7 +387,7 @@ Iterate through CamelCase words.
 
 #+BEGIN_SRC emacs-lisp
 (use-package subword
-  :delight " subword"
+  :delight "subword"
   :config (global-subword-mode))
 #+END_SRC
 #+END_SRC
