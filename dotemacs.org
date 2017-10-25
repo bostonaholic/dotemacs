@@ -21,6 +21,7 @@
 - [[#programming][Programming]]
   - [[#magit][Magit]]
   - [[#paredit][Paredit]]
+- [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
 
@@ -366,4 +367,23 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
+#+END_SRC
+
+* Miscellaneous
+
+#+BEGIN_SRC emacs-lisp
+(defun sort-words (reverse beg end)
+  "Sort words in region alphabetically, in REVERSE if negative.
+    Prefixed with negative \\[universal-argument], sorts in reverse.
+    The variable `sort-fold-case' determines whether alphabetic case
+    affects the sort order.
+    See `sort-regexp-fields'."
+  (interactive "*P\nr")
+  (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+
+(defun sort-symbols (reverse beg end)
+  "Sort symbols in region alphabetically, in REVERSE if negative.
+    See `sort-words'."
+  (interactive "*P\nr")
+  (sort-regexp-fields reverse "\\(\\sw\\|\\s_\\)+" "\\&" beg end))
 #+END_SRC
