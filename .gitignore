@@ -1,4 +1,5 @@
 .custom.el
 .secret.el
 dotemacs.el
+auto-save-list/
 elpa/
