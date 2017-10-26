@@ -22,6 +22,10 @@
 - [[#programming][Programming]]
   - [[#magit][Magit]]
   - [[#paredit][Paredit]]
+- [[#text][Text]]
+  - [[#highlights][Highlights]]
+  - [[#whitespace][Whitespace]]
+  - [[#completion][Completion]]
 - [[#movement][Movement]]
   - [[#general-movement][General Movement]]
 - [[#miscellaneous][Miscellaneous]]
@@ -390,6 +394,35 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
+
+* Text
+
+** Highlights
+
+#+BEGIN_SRC emacs-lisp
+(use-package hi-lock)
+
+(use-package idle-highlight-mode
+  :config
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (idle-highlight-mode t))))
+#+END_SRC
+
+** Whitespace
+
+#+BEGIN_SRC emacs-lisp
+(use-package whitespace
+  :config
+  (add-hook 'prog-mode-hook 'whitespace-mode))
+#+END_SRC
+
+** Completion
+
+#+BEGIN_SRC emacs-lisp
+(use-package company
+  :config (global-company-mode))
+#+END_SRC
 
 * Movement
 
