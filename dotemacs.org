@@ -407,7 +407,7 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 
 #+BEGIN_SRC emacs-lisp
 (use-package paredit
-  :config
+  :init
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
