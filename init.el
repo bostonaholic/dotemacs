@@ -21,7 +21,8 @@
     (package-refresh-contents)
     (package-install 'delight t)
     (package-install 'use-package t))
-  (setq-default use-package-always-ensure t)
+  (setq-default use-package-always-defer t
+                use-package-always-ensure t)
 
   ;; Use latest Org
   (use-package org
