@@ -279,7 +279,6 @@ HTML mode is defined in =sgml-mode.el=.
 #+BEGIN_SRC emacs-lisp
 (use-package emacs-lisp-mode
   :ensure nil
-  :delight emacs-lisp-mode "Emacs Lisp"
   :config (delight 'lisp-interaction-mode "Lisp Interaction"))
 
 (use-package ielm
