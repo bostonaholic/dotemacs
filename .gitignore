@@ -1,5 +1,7 @@
 .custom.el
 .secret.el
 dotemacs.el
+projectile-bookmarks.eld
+recentf
 auto-save-list/
 elpa/

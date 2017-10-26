@@ -32,6 +32,8 @@
   - [[#mwim][Mwim]]
 - [[#projects][Projects]]
   - [[#smex][Smex]]
+  - [[#projectile][Projectile]]
+  - [[#recentf][Recentf]]
 - [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
@@ -494,6 +496,53 @@ Iterate through CamelCase words.
   (("M-x" . smex)
    ("M-X" . smex-major-mode-commands)))
 #+END_SRC
+
+** Projectile
+
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :commands
+  (projectile-ack
+   projectile-ag
+   projectile-compile-project
+   projectile-dired
+   projectile-find-dir
+   projectile-find-file
+   projectile-find-tag
+   projectile-test-project
+   projectile-grep
+   projectile-invalidate-cache
+   projectile-kill-buffers
+   projectile-multi-occur
+   projectile-project-p
+   projectile-project-root
+   projectile-recentf
+   projectile-regenerate-tags
+   projectile-replace
+   projectile-replace-regexp
+   projectile-run-async-shell-command-in-root
+   projectile-run-shell-command-in-root
+   projectile-switch-project
+   projectile-switch-to-buffer
+   projectile-vc)
+  :init (setq projectile-sort-order 'recentf)
+  :config (projectile-global-mode))
+#+END_SRC
+
+** Recentf
+
+#+BEGIN_SRC emacs-lisp
+(use-package recentf
+  :init
+  (add-hook 'find-file-hook (lambda () (unless recentf-mode
+                                         (recentf-mode)
+                                         (recentf-track-opened-file))))
+  (setq recentf-max-saved-items 1000
+        recentf-auto-cleanup 'never
+        recentf-auto-save-timer (run-with-idle-timer 600 t 'recentf-save-list))
+  :config
+  (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
+  (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
 #+END_SRC
 
 * Miscellaneous
