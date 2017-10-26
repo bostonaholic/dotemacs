@@ -285,8 +285,7 @@ HTML mode is defined in =sgml-mode.el=.
   :init (add-hook 'ielm-mode-hook '(lambda () (setq-local scroll-margin 0))))
 
 (use-package lisp-mode
-  :ensure nil
-  :delight lisp-mode "Lisp")
+  :ensure nil)
 #+END_SRC
 
 ** Markdown
