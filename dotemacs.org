@@ -171,6 +171,21 @@ A neat file explorer.
         neo-vc-integration nil)
   :bind ("C-c n" . neotree-toggle))
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+  (setq undo-tree-visualizer-timestamps t
+        undo-tree-visualizer-diff t))
+#+END_SRC
+
+Highlight `TODO`.
+
+#+BEGIN_SRC emacs-lisp
+(use-package hl-todo
+  :config
+  (global-hl-todo-mode))
 #+END_SRC
 
 * Languages
@@ -394,6 +409,7 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
+#+END_SRC
 
 * Text
 
