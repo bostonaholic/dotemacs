@@ -28,6 +28,8 @@
   - [[#completion][Completion]]
 - [[#movement][Movement]]
   - [[#general-movement][General Movement]]
+  - [[#ace-jump][Ace Jump]]
+  - [[#mwim][Mwim]]
 - [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
@@ -460,6 +462,22 @@ Iterate through CamelCase words.
 (global-set-key (kbd "C-S-<down>")  'buf-move-down)
 (global-set-key (kbd "C-S-<left>")  'buf-move-left)
 (global-set-key (kbd "C-S-<right>") 'buf-move-right)
+#+END_SRC
+
+** Ace Jump
+
+#+BEGIN_SRC emacs-lisp
+(use-package ace-jump-mode
+  :bind ("C-." . ace-jump-mode))
+#+END_SRC
+
+** Mwim
+
+#+BEGIN_SRC emacs-lisp
+(use-package mwim
+  :init
+  (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+  (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line))
 #+END_SRC
 #+END_SRC
 
