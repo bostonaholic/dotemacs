@@ -439,6 +439,15 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
   (add-hook 'prog-mode-hook 'whitespace-mode))
 #+END_SRC
 
+Trailing whitespace font a little more reasonable.
+
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'trailing-whitespace nil
+                    :background
+                    (face-attribute 'font-lock-comment-face
+                                    :foreground))
+#+END_SRC
+
 ** Completion
 
 #+BEGIN_SRC emacs-lisp
