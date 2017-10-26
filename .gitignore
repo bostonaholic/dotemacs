@@ -3,5 +3,6 @@
 dotemacs.el
 projectile-bookmarks.eld
 recentf
+smex-items
 auto-save-list/
 elpa/
