@@ -30,6 +30,8 @@
   - [[#general-movement][General Movement]]
   - [[#ace-jump][Ace Jump]]
   - [[#mwim][Mwim]]
+- [[#projects][Projects]]
+  - [[#smex][Smex]]
 - [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
@@ -477,6 +479,21 @@ Iterate through CamelCase words.
   :init
   (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
   (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line))
+#+END_SRC
+
+* Projects
+
+** Smex
+
+#+BEGIN_SRC emacs-lisp
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(use-package smex
+  :init
+  (setq smex-history-length 32)
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)))
 #+END_SRC
 #+END_SRC
 
