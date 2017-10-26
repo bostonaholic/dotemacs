@@ -69,6 +69,7 @@ More better defaults.
  display-time-default-load-average nil             ; Don't display load average
  display-time-format "%H:%M"                       ; Format the time string
  fill-column 80                                    ; Set width for automatic line breaks
+ global-visual-line-mode t                         ; Act on visual lines, not logical lines
  help-window-select t                              ; Focus new help windows when opened
  indent-tabs-mode nil                              ; Stop using tabs to indent
  inhibit-startup-screen t                          ; Disable start-up screen
