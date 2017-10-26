@@ -482,6 +482,36 @@ Iterate through CamelCase words.
 
 * Miscellaneous
 
+Reload files that have been changed on the filesystem.
+
+#+BEGIN_SRC emacs-lisp
+(use-package autorevert)
+#+END_SRC
+
+UUID generator.
+
+#+BEGIN_SRC emacs-lisp
+(use-package uuidgen)
+#+END_SRC
+
+Join lines together.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-j")
+                  (lambda ()
+                    (interactive)
+                    (join-line -1)))
+#+END_SRC
+
+Resizing text.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+#+END_SRC
+
+Sorting functions.
+
 #+BEGIN_SRC emacs-lisp
 (defun sort-words (reverse beg end)
   "Sort words in region alphabetically, in REVERSE if negative.
