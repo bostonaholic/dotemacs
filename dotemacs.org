@@ -451,6 +451,16 @@ Iterate through CamelCase words.
   :delight "subword"
   :config (global-subword-mode))
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-n") 'scroll-up-line)
+(global-set-key (kbd "M-p") 'scroll-down-line)
+
+(global-set-key (kbd "C-S-<up>")    'buf-move-up)
+(global-set-key (kbd "C-S-<down>")  'buf-move-down)
+(global-set-key (kbd "C-S-<left>")  'buf-move-left)
+(global-set-key (kbd "C-S-<right>") 'buf-move-right)
+#+END_SRC
 #+END_SRC
 
 * Miscellaneous
