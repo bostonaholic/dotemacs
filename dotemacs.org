@@ -35,6 +35,7 @@
   - [[#smex][Smex]]
   - [[#projectile][Projectile]]
   - [[#recentf][Recentf]]
+  - [[#helm][Helm]]
 - [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
@@ -588,6 +589,14 @@ Iterate through CamelCase words.
   :config
   (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
+#+END_SRC
+
+** Helm
+
+Since there is a lot of configuration for helm, load it from a separate file.
+
+#+BEGIN_SRC emacs-lisp
+(load-file (expand-file-name "lisp/helm.el" user-emacs-directory))
 #+END_SRC
 
 * Miscellaneous
