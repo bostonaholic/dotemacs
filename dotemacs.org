@@ -17,6 +17,7 @@
   - [[#lisp][Lisp]]
   - [[#markdown][Markdown]]
   - [[#org][Org]]
+  - [[#pcre2el][pcre2el]]
   - [[#protobuf][Protobuf]]
   - [[#ruby][Ruby]]
   - [[#yaml][YAML]]
@@ -374,6 +375,14 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 #+BEGIN_SRC emacs-lisp
 (use-package toc-org
   :after org)
+#+END_SRC
+
+** pcre2el
+
+Convert between PCRE, Emacs, and rx regexp syntax (used by =:helm-ag:=).
+
+#+BEGIN_SRC emacs-lisp
+(use-package pcre2el)
 #+END_SRC
 
 ** Protobuf
