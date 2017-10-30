@@ -63,6 +63,7 @@ More better defaults.
 #+BEGIN_SRC emacs-lisp
 (setq-default
  ad-redefinition-action 'accept                    ; Silence warnings for redefinition
+ apropos-do-all t                                  ; More extensive searching with apropos
  column-number-mode t                              ; Show column number
  confirm-kill-emacs 'yes-or-no-p                   ; Confirm before exiting Emacs
  cursor-in-non-selected-windows t                  ; Hide the cursor in inactive windows
