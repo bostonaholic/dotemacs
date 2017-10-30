@@ -189,6 +189,7 @@ A neat file explorer.
         neo-auto-indent-point t
         neo-modern-sidebar t
         neo-vc-integration nil)
+
   :bind ("C-c n" . neotree-toggle))
 #+END_SRC
 
@@ -242,11 +243,12 @@ Highlight =TODO=.
   :config (setq-default css-indent-offset 2))
 
 (use-package scss-mode
+  :mode "\\.scss\\'"
   :preface
   (defun msb/scss-set-comment-style ()
     (setq-local comment-end "")
     (setq-local comment-start "//"))
-  :mode "\\.scss\\'"
+
   :init (add-hook 'scss-mode-hook #'msb/scss-set-comment-style))
 #+END_SRC
 
@@ -266,6 +268,7 @@ HTML mode is defined in =sgml-mode.el=.
   :init
   (add-hook 'html-mode-hook #'sgml-electric-tag-pair-mode)
   (add-hook 'html-mode-hook #'sgml-name-8bit-mode)
+
   :config (setq-default sgml-basic-offset 2))
 #+END_SRC
 
@@ -307,6 +310,7 @@ HTML mode is defined in =sgml-mode.el=.
 (use-package markdown-mode
   :init
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
+
   :config
   (setq-default
     markdown-asymmetric-header t
@@ -331,6 +335,7 @@ HTML mode is defined in =sgml-mode.el=.
     "See `org-forward-paragraph'. Support shift."
     (interactive "^")
     (org-forward-paragraph))
+
   :bind
   (:map org-mode-map
         ([remap backward-paragraph] . msb/org-backward-paragraph-shifted)
@@ -338,9 +343,11 @@ HTML mode is defined in =sgml-mode.el=.
         ("<C-return>" . nil)
         ("<C-S-down>" . nil)
         ("<C-S-up>" . nil))
+
   :init
   (add-hook 'org-mode-hook #'org-sticky-header-mode)
   (add-hook 'org-mode-hook #'toc-org-enable)
+
   :config
   (setq-default
    org-descriptive-links nil
@@ -394,6 +401,7 @@ Convert between PCRE, Emacs, and rx regexp syntax (used by =helm-ag=).
   (defconst my/protobuf-style
     '((c-basic-offset . 2)
       (indent-tabs-mode . nil)))
+
   :init
   (add-hook 'protobuf-mode-hook (lambda () (c-add-style "my-style" my/protobuf-style t))))
 #+END_SRC
@@ -533,8 +541,9 @@ Iterate through CamelCase words.
                ;; assigning 0 only to the top-left window
                (eq (selected-window) (frame-first-window)))
       0))
-  :init
-  (winum-mode)
+
+  :init (winum-mode)
+
   :config
   (setq winum-auto-assign-0-to-minibuffer nil
         winum-assign-func 'msb//winum-assign-func
@@ -561,8 +570,7 @@ Iterate through CamelCase words.
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (use-package smex
-  :init
-  (setq smex-history-length 32)
+  :init (setq smex-history-length 32)
   :bind
   (("M-x" . smex)
    ("M-X" . smex-major-mode-commands)))
@@ -596,6 +604,7 @@ Iterate through CamelCase words.
    projectile-switch-project
    projectile-switch-to-buffer
    projectile-vc)
+
   :init (setq projectile-sort-order 'recentf)
   :config (projectile-global-mode))
 #+END_SRC
@@ -611,6 +620,7 @@ Iterate through CamelCase words.
   (setq recentf-max-saved-items 1000
         recentf-auto-cleanup 'never
         recentf-auto-save-timer (run-with-idle-timer 600 t 'recentf-save-list))
+
   :config
   (add-to-list 'recentf-exclude (expand-file-name package-user-dir))
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
