@@ -78,7 +78,7 @@ More better defaults.
  large-file-warning-threshold 100000000            ; Warn before opening large files
  left-margin-width 1 right-margin-width 1          ; Add left and right margins
  linum-format " %3i "                              ; Format line numbers
- mode-require-final-newline 'visit                 ; Add a newline at EOF on visit
+ mode-require-final-newline t                      ; Add a newline at EOF on save
  mouse-yank-at-point t                             ; Yank at point rather than pointer
  ns-use-srgb-colorspace nil                        ; Don't use sRGB colors
  recenter-positions '(5 top bottom)                ; Set re-centering positions
