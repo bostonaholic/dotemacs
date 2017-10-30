@@ -200,7 +200,7 @@ A neat file explorer.
         undo-tree-visualizer-diff t))
 #+END_SRC
 
-Highlight `TODO`.
+Highlight =TODO=.
 
 #+BEGIN_SRC emacs-lisp
 (use-package hl-todo
@@ -379,7 +379,7 @@ maintain a TOC at the first heading that has a =:TOC:= tag.
 
 ** pcre2el
 
-Convert between PCRE, Emacs, and rx regexp syntax (used by =:helm-ag:=).
+Convert between PCRE, Emacs, and rx regexp syntax (used by =helm-ag=).
 
 #+BEGIN_SRC emacs-lisp
 (use-package pcre2el)
