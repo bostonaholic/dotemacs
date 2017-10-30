@@ -631,7 +631,7 @@ Iterate through CamelCase words.
 Since there is a lot of configuration for helm, load it from a separate file.
 
 #+BEGIN_SRC emacs-lisp
-(load-file (expand-file-name "lisp/helm.el" user-emacs-directory))
+(load-file (expand-file-name "lisp/helm/packages.el" user-emacs-directory))
 #+END_SRC
 
 * Miscellaneous

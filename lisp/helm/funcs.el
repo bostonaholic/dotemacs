@@ -1,4 +1,4 @@
-;;; helm-funcs.el
+;;; funcs.el
 
 (defun msb/helm-find-files (arg)
   "Custom implementation for calling helm-find-files-1.
@@ -269,4 +269,4 @@ Search for a search tool in the order provided by `search-tools'."
   (interactive)
   (msb/helm-project-smart-do-search t))
 
-;;; helm-funcs.el
+;;; funcs.el

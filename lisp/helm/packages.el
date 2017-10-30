@@ -1,8 +1,8 @@
-;;; helm.el
+;;; packages.el
 
 (use-package helm
   :defer 1
-  :preface (load-file (expand-file-name "lisp/helm-funcs.el" user-emacs-directory))
+  :preface (load-file (expand-file-name "lisp/helm/funcs.el" user-emacs-directory))
   :commands (msb/helm-find-files)
 
   :init
@@ -40,4 +40,4 @@
         (helm-exit-and-execute-action
          'msb/helm-project-smart-do-search-in-dir)))))
 
-;;; helm.el
+;;; packages.el
