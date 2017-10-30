@@ -40,4 +40,4 @@
         (helm-exit-and-execute-action
          'msb/helm-project-smart-do-search-in-dir)))))
 
-;;; packages.el
+;;; packages.el ends here

@@ -269,4 +269,4 @@ Search for a search tool in the order provided by `search-tools'."
   (interactive)
   (msb/helm-project-smart-do-search t))
 
-;;; funcs.el
+;;; funcs.el ends here
