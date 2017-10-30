@@ -28,6 +28,7 @@
   - [[#completion][Completion]]
 - [[#movement][Movement]]
   - [[#general-movement][General Movement]]
+  - [[#buffer-move][Buffer Move]]
   - [[#ace-jump][Ace Jump]]
   - [[#mwim][Mwim]]
   - [[#winum][Winum]]
@@ -470,11 +471,17 @@ Iterate through CamelCase words.
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-n") 'scroll-up-line)
 (global-set-key (kbd "M-p") 'scroll-down-line)
+#+END_SRC
 
-(global-set-key (kbd "C-S-<up>")    'buf-move-up)
-(global-set-key (kbd "C-S-<down>")  'buf-move-down)
-(global-set-key (kbd "C-S-<left>")  'buf-move-left)
-(global-set-key (kbd "C-S-<right>") 'buf-move-right)
+** Buffer Move
+
+#+BEGIN_SRC emacs-lisp
+(use-package buffer-move
+  :bind
+  (("C-S-<up>" . buf-move-up)
+   ("C-S-<down>" . buf-move-down)
+   ("C-S-<left>" . buf-move-left)
+   ("C-S-<right>" . buf-move-right)))
 #+END_SRC
 
 ** Ace Jump
