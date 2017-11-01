@@ -24,6 +24,7 @@
 - [[#programming][Programming]]
   - [[#magit][Magit]]
   - [[#paredit][Paredit]]
+  - [[#github][GitHub]]
 - [[#text][Text]]
   - [[#highlights][Highlights]]
   - [[#whitespace][Whitespace]]
@@ -442,6 +443,13 @@ Convert between PCRE, Emacs, and rx regexp syntax (used by =helm-ag=).
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode))
+#+END_SRC
+
+** GitHub
+
+#+BEGIN_SRC emacs-lisp
+(use-package github-browse-file
+  :bind ("C-c C-g o" . github-browse-file))
 #+END_SRC
 
 * Text
