@@ -25,6 +25,7 @@
   - [[#magit][Magit]]
   - [[#paredit][Paredit]]
   - [[#github][GitHub]]
+  - [[#syntax-checking][Syntax Checking]]
 - [[#text][Text]]
   - [[#highlights][Highlights]]
   - [[#whitespace][Whitespace]]
@@ -263,7 +264,9 @@ Highlight sexp after evaluation.
     (setq-local comment-end "")
     (setq-local comment-start "//"))
 
-  :init (add-hook 'scss-mode-hook #'msb/scss-set-comment-style))
+  :init
+  (add-hook 'scss-mode-hook #'msb/scss-set-comment-style)
+  (add-hook 'scss-mode-hook 'flycheck-mode))
 #+END_SRC
 
 ** Docker
@@ -289,15 +292,20 @@ HTML mode is defined in =sgml-mode.el=.
 ** JavaScript
 
 #+BEGIN_SRC emacs-lisp
-(use-package coffee-mode)
+(use-package coffee-mode
+  :init (add-hook 'coffee-mode-hook 'flycheck-mode))
 
 (use-package js2-mode
   :delight js2-jsx-mode "JSX"
   :mode ("\\.jsx?\\'" . js2-jsx-mode)
-  :interpreter ("node" . js2-jsx-mode))
+  :interpreter ("node" . js2-jsx-mode)
+  :init
+  (add-hook 'js2-mode-hook 'flycheck-mode)
+  (add-hook 'js2-jsx-mode-hook 'flycheck-mode))
 
 (use-package json-mode
-  :mode "\\.jshintrc\\'")
+  :mode "\\.jshintrc\\'"
+  :init (add-hook 'json-mode-hook 'flycheck-mode))
 
 (use-package tern
   :init (add-hook 'js-mode-hook #'tern-mode))
@@ -427,14 +435,18 @@ Convert between PCRE, Emacs, and rx regexp syntax (used by =helm-ag=).
 
 (use-package ruby-mode
   :mode "Brewfile\\'"
-  :interpreter "ruby")
+  :interpreter "ruby"
+  :init
+  (add-hook 'ruby-mode-hook 'flycheck-mode)
+  (add-hook 'enh-ruby-mode-hook 'flycheck-mode))
 #+END_SRC
 
 ** YAML
 
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
-  :mode ("\\.ya?ml\\'" "Procfile\\'"))
+  :mode ("\\.ya?ml\\'" "Procfile\\'")
+  :init (add-hook 'yaml-mode-hook 'flycheck-mode))
 #+END_SRC
 
 * Programming
@@ -462,6 +474,18 @@ Convert between PCRE, Emacs, and rx regexp syntax (used by =helm-ag=).
 #+BEGIN_SRC emacs-lisp
 (use-package github-browse-file
   :bind ("C-c C-g o" . github-browse-file))
+#+END_SRC
+
+** Syntax Checking
+
+Flycheck for syntax checking.
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :init
+  (setq flycheck-standard-error-navigation nil
+        flycheck-global-modes nil)
+  (global-flycheck-mode 1))
 #+END_SRC
 
 * Text
