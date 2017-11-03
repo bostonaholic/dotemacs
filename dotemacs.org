@@ -92,6 +92,7 @@ More better defaults.
  large-file-warning-threshold 100000000            ; Warn before opening large files
  left-margin-width 1 right-margin-width 1          ; Add left and right margins
  linum-format " %3i "                              ; Format line numbers
+ make-backup-files nil                             ; Do not create backup~ files
  mode-require-final-newline t                      ; Add a newline at EOF on save
  mouse-yank-at-point t                             ; Yank at point rather than pointer
  ns-use-srgb-colorspace nil                        ; Don't use sRGB colors
