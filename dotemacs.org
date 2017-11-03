@@ -28,7 +28,7 @@
 - [[#text][Text]]
   - [[#highlights][Highlights]]
   - [[#whitespace][Whitespace]]
-  - [[#completion][Completion]]
+  - [[#auto-completion][Auto Completion]]
 - [[#movement][Movement]]
   - [[#general-movement][General Movement]]
   - [[#buffer-move][Buffer Move]]
@@ -496,7 +496,7 @@ Trailing whitespace font a little more reasonable.
                                     :foreground))
 #+END_SRC
 
-** Completion
+** Auto Completion
 
 #+BEGIN_SRC emacs-lisp
 (use-package auto-complete
