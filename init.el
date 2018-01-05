@@ -1,6 +1,6 @@
 ;;; init.el
 
-;; Copyright (C) 2017 Matthew Boston
+;; Copyright (C) 2018 Matthew Boston
 ;; Created: October 24, 2017
 ;; Homepage: https://github.com/bostonaholic/dotemacs
 
