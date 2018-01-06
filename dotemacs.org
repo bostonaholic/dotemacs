@@ -774,7 +774,8 @@ Since there is a lot of configuration for helm, load it from a separate file.
 Reload files that have been changed on the filesystem.
 
 #+BEGIN_SRC emacs-lisp
-(use-package autorevert)
+(use-package autorevert
+  :delight auto-revert-mode)
 #+END_SRC
 
 UUID generator.
@@ -788,9 +789,9 @@ Discoverability of
 
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
+  :delight which-key-mode
   :ensure t
-  :init (which-key-mode)
-  :diminish which-key-mode)
+  :init (which-key-mode))
 #+END_SRC
 
 Join lines together.
