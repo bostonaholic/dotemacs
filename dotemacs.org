@@ -41,7 +41,9 @@
   - [[#smex][Smex]]
   - [[#projectile][Projectile]]
   - [[#recentf][Recentf]]
-  - [[#helm][Helm]]
+  - [[#ivy][Ivy]]
+  - [[#counsel][Counsel]]
+  - [[#swiper][Swiper]]
 - [[#miscellaneous][Miscellaneous]]
 
 * Bootstrap
@@ -736,7 +738,9 @@ Project interaction.
    projectile-switch-to-buffer
    projectile-vc)
 
-  :init (setq projectile-sort-order 'recentf)
+  :init
+  (setq projectile-sort-order 'recentf
+        projectile-completion-system 'ivy)
   :config (projectile-global-mode))
 #+END_SRC
 
@@ -759,14 +763,46 @@ Build a list of recently opened files.
   (add-to-list 'recentf-exclude "COMMIT_EDITMSG\\'"))
 #+END_SRC
 
-** Helm
+** Ivy
 
-Incremental completions and selection narrowing.
-
-Since there is a lot of configuration for helm, load it from a separate file.
+Ivy, a generic completion mechanism for Emacs.
 
 #+BEGIN_SRC emacs-lisp
-(load-file (expand-file-name "lisp/helm/packages.el" user-emacs-directory))
+(use-package ivy
+  :ensure t
+  :config
+  (with-eval-after-load 'recentf
+    (setq ivy-use-virtual-buffers t))
+  (ivy-mode 1))
+#+END_SRC
+
+Additional keybindings for Ivy.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ivy-hydra)
+#+END_SRC
+
+** Counsel
+
+Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
+
+#+BEGIN_SRC emacs-lisp
+(use-package counsel
+  :ensure t
+  :config (counsel-mode 1))
+
+(use-package counsel-projectile
+  :defer t)
+#+END_SRC
+
+** Swiper
+
+Swiper, an Ivy-enhanced alternative to isearch.
+
+#+BEGIN_SRC emacs-lisp
+(use-package swiper
+  :ensure t
+  :config (global-set-key (kbd "C-s") 'swiper))
 #+END_SRC
 
 * Miscellaneous
