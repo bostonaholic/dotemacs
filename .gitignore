@@ -2,6 +2,7 @@
 .custom.el
 .secret.el
 dotemacs.el
+network-security.data
 projectile-bookmarks.eld
 recentf
 smex-items
