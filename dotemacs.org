@@ -164,7 +164,7 @@ Load some of those secrets.
 Set the font that I like.
 
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "Fira Mono for Powerline")
+(set-face-attribute 'default nil :font "Source Code Pro for Powerline")
 #+END_SRC
 
 The face for italic text is underlined when the font does not support slant by default. I don't like it.
