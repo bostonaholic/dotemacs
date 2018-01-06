@@ -35,7 +35,7 @@
   - [[#buffer-move][Buffer Move]]
   - [[#text-search][Text Search]]
   - [[#ace-jump][Ace Jump]]
-  - [[#mwim][Mwim]]
+  - [[#move-where-i-mean][Move Where I Mean]]
   - [[#winum][Winum]]
 - [[#projects][Projects]]
   - [[#smex][Smex]]
@@ -134,6 +134,8 @@ Garbage collect on focus-out.
 
 ** Load =.custom.el=
 
+Set the =custom-file= and load it.
+
 #+BEGIN_SRC emacs-lisp
 (setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
@@ -141,6 +143,8 @@ Garbage collect on focus-out.
 #+END_SRC
 
 ** Load =.secret.el=
+
+Load =.secret.el= file to store code not in git.
 
 #+BEGIN_SRC emacs-lisp
 (let ((secret.el (expand-file-name ".secret.el" user-emacs-directory)))
@@ -604,6 +608,8 @@ Iterate through CamelCase words.
   :config (global-subword-mode))
 #+END_SRC
 
+Scrolling.
+
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "M-n") 'scroll-up-line)
 (global-set-key (kbd "M-p") 'scroll-down-line)
@@ -636,7 +642,9 @@ Iterate through CamelCase words.
   :bind ("C-." . ace-jump-mode))
 #+END_SRC
 
-** Mwim
+** Move Where I Mean
+
+Move to the beginning/end of code, line, or comment.
 
 #+BEGIN_SRC emacs-lisp
 (use-package mwim
@@ -686,6 +694,8 @@ Iterate through CamelCase words.
 
 ** Smex
 
+M-x enhancements.
+
 #+BEGIN_SRC emacs-lisp
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
@@ -697,6 +707,8 @@ Iterate through CamelCase words.
 #+END_SRC
 
 ** Projectile
+
+Project interaction.
 
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
@@ -731,6 +743,8 @@ Iterate through CamelCase words.
 
 ** Recentf
 
+Build a list of recently opened files.
+
 #+BEGIN_SRC emacs-lisp
 (use-package recentf
   :init
@@ -747,6 +761,8 @@ Iterate through CamelCase words.
 #+END_SRC
 
 ** Helm
+
+Incremental completions and selection narrowing.
 
 Since there is a lot of configuration for helm, load it from a separate file.
 
