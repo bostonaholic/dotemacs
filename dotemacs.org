@@ -497,8 +497,6 @@ Flycheck for syntax checking.
 ** Highlights
 
 #+BEGIN_SRC emacs-lisp
-(use-package hi-lock)
-
 (use-package idle-highlight-mode
   :init
   (add-hook 'prog-mode-hook
