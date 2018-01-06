@@ -791,7 +791,10 @@ Discoverability of
 (use-package which-key
   :delight which-key-mode
   :ensure t
-  :init (which-key-mode))
+  :init (which-key-mode)
+  :config
+  (setq which-key-sort-order 'which-key-key-order-alpha
+        which-key-idle-delay 0.5))
 #+END_SRC
 
 Join lines together.
