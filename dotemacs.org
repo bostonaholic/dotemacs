@@ -26,6 +26,7 @@
   - [[#paredit][Paredit]]
   - [[#github][GitHub]]
   - [[#syntax-checking][Syntax Checking]]
+  - [[#miscellaneous][Miscellaneous]]
 - [[#text][Text]]
   - [[#highlights][Highlights]]
   - [[#whitespace][Whitespace]]
@@ -44,7 +45,7 @@
   - [[#ivy][Ivy]]
   - [[#counsel][Counsel]]
   - [[#swiper][Swiper]]
-- [[#miscellaneous][Miscellaneous]]
+- [[#miscellaneous-1][Miscellaneous]]
 
 * Bootstrap
 
@@ -517,6 +518,12 @@ Flycheck for syntax checking.
   (setq flycheck-standard-error-navigation nil
         flycheck-global-modes nil)
   (global-flycheck-mode 1))
+#+END_SRC
+
+** Miscellaneous
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 #+END_SRC
 
 * Text
