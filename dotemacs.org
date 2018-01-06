@@ -845,7 +845,7 @@ UUID generator.
   :commands (uuidgen-1 uuidgen-4))
 #+END_SRC
 
-Discoverability of 
+Discoverability of available keybindings.
 
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
