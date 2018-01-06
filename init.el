@@ -26,8 +26,8 @@
 
   ;; Use latest Org
   (use-package org
-    :pin org
-    :ensure org-plus-contrib)
+    :ensure org-plus-contrib
+    :pin org)
 
   ;; Tangle configuration
   (org-babel-load-file (expand-file-name "dotemacs.org" user-emacs-directory))
