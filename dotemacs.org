@@ -184,7 +184,26 @@ Load UI theme.
 #+BEGIN_SRC emacs-lisp
 (use-package solarized-theme
   :demand t
-  :config (load-theme 'solarized-light))
+
+  :preface
+  (defvar my/current-theme 'nil)
+  (setq-default my/themes '(solarized-light solarized-dark)
+                my/cycle-themes (cdr my/themes))
+  (defun msb/cycle-themes ()
+    "Cycle through themes."
+    (interactive)
+    (when my/current-theme
+      (disable-theme my/current-theme)
+      ;; if current theme isn't in cycleable themes, start over
+      (setq my/cycle-themes
+            (or (cdr (memq my/current-theme my/themes))
+                my/themes)))
+    (setq my/current-theme (pop my/cycle-themes))
+    (load-theme my/current-theme))
+
+  :config (load-theme 'solarized-light)
+
+  :bind ("C-c T n" . msb/cycle-themes))
 #+END_SRC
 
 A neat file explorer.
