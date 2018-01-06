@@ -175,11 +175,12 @@ The face for italic text is underlined when the font does not support slant by d
 (set-face-attribute 'italic nil :underline nil)
 #+END_SRC
 
-Load =monokai-theme=.
+Load UI theme.
 
 #+BEGIN_SRC emacs-lisp
-(use-package monokai-theme
-  :demand t)
+(use-package solarized-theme
+  :demand t
+  :config (load-theme 'solarized-light))
 #+END_SRC
 
 A neat file explorer.
