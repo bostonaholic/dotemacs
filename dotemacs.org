@@ -28,7 +28,6 @@
   - [[#syntax-checking][Syntax Checking]]
   - [[#miscellaneous][Miscellaneous]]
 - [[#text][Text]]
-  - [[#highlights][Highlights]]
   - [[#whitespace][Whitespace]]
   - [[#auto-completion][Auto Completion]]
 - [[#movement][Movement]]
@@ -527,16 +526,6 @@ Flycheck for syntax checking.
 #+END_SRC
 
 * Text
-
-** Highlights
-
-#+BEGIN_SRC emacs-lisp
-(use-package idle-highlight-mode
-  :init
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (idle-highlight-mode t))))
-#+END_SRC
 
 ** Whitespace
 
