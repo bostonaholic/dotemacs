@@ -654,6 +654,41 @@ Scrolling.
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+(defun my/counsel-search (&optional initial-directory use-initial-input)
+  (let* ((initial-input (if use-initial-input
+                            (if (region-active-p)
+                                (buffer-substring-no-properties
+                                 (region-beginning) (region-end))
+                              (thing-at-point 'symbol t))
+                          "")))
+    (setq counsel--git-grep-dir
+          (or initial-directory
+              (read-directory-name "Start from directory: ")))
+
+    (ivy-read
+     (concat ivy-count-format
+             (format "%s from [%s]: "
+                     "ag"
+                     counsel--git-grep-dir))
+     :initial-input (rxt-quote-pcre initial-input)
+     :dynamic-collection t
+     :history 'counsel-git-grep-history
+     :action #'counsel-git-grep-action
+     :caller 'my/counsel-search
+     :keymap nil
+     :unwind (lambda ()
+               (counsel-delete-process)
+               (swiper--cleanup)))))
+
+(defun my/counsel-search-auto ()
+  (my/counsel-search (projectile-root) nil))
+
+(defun my/counsel-search-region-or-symbol ()
+  (my/counsel-search (projectile-root) t))
+
+(global-set-key (kbd "C-x /") 'my/counsel-search-auto)
+(global-set-key (kbd "C-x *") 'my/counsel-search-region-or-symbol)
 #+END_SRC
 
 ** Ace Jump
